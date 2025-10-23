@@ -1,5 +1,5 @@
 <template>
-    <Waterfall :list="list" :gutter="10" :crossOrigin="false" :width="400" :lazyload="true" :imgSelector="_lazyImg">
+    <Waterfall :list="list" :gutter="10" :crossOrigin="false" :width="400" :lazyload="true" :imgSelector="_lazyImg" :breakpoints="breakpoints">
     <!-- v2.6.0之前版本插槽数据获取 -->
     <!-- <template #item="{ item, url, index }"> -->
     <!-- 新版插槽数据获取 -->
@@ -25,9 +25,16 @@
     const {data} = await axios.get(`https://www.loliapi.com/acg/?id=${i}&type=url`)
 
     */
-   const loadMore = ref(null)
-    onMounted(() => {
-      loadImg()
+
+    const breakpoints = reactive({
+        1200:{rowPerView:3},
+        800:{rowPerView:2},
+        300:{rowPerView:1},
+      })
+
+     const loadMore = ref(null)
+      onMounted(() => {
+        loadImg()
 
       const io = new IntersectionObserver(([entry]) => {
           if (entry.isIntersecting) {
@@ -37,8 +44,7 @@
 
       io.observe(loadMore.value)
     })
-    
-
+  
     const loadImg = async () => {
         const num = 15
 
