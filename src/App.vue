@@ -1,5 +1,5 @@
 <template>
-    <Waterfall :list="list" :gutter="10" :crossOrigin="false" :width="400" :lazyload="true" :imgSelector="_lazyImg" :breakpoints="breakpoints">
+    <Waterfall :list="list" :gutter="10" :space="1" :crossOrigin="false" :width="400" :lazyload="true" :imgSelector="_lazyImg" :breakpoints="breakpoints">
     <!-- v2.6.0之前版本插槽数据获取 -->
     <!-- <template #item="{ item, url, index }"> -->
     <!-- 新版插槽数据获取 -->
@@ -46,7 +46,7 @@
     })
   
     const loadImg = async () => {
-        const num = 15
+        const num = 10
 
         const {data} = await axios.get('https://t.alcy.cc/moez/?json&quantity='+num)
 
