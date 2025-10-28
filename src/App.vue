@@ -48,7 +48,7 @@
     const loadImg = async () => {
         const num = 10
 
-        const {data} = await axios.get('https://t.alcy.cc/moez/?json&quantity='+num)
+        const {data} = await axios.get('https://t.alcy.cc/ycy/?json&quantity='+num)
 
         // console.log(data)
         const urls = data.match(/https[^\s]+\.webp/g)
